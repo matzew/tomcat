@@ -262,14 +262,14 @@ action :configure do
       service_name "#{instance}"
       supports :restart => true, :status => true
     when 'debian'
-      service_name "#{instance}"
+      service_name 'tomcat'
       supports :restart => true, :reload => false, :status => true
     when 'smartos'
       # SmartOS doesn't support multiple instances
       service_name 'tomcat'
       supports :restart => false, :reload => false, :status => true
     else
-      service_name "#{instance}"
+      service_name 'tomcat'
     end
     action [:start, :enable]
     notifies :run, "execute[wait for #{instance}]", :immediately
